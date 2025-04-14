@@ -1,0 +1,94 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+    provider = "prisma-client-js"
+    output   = "../../node_modules/.prisma/client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id           String     @id @default(uuid())
+    username     String?    @unique
+    email        String     @unique
+    phone        String?    @unique
+    role         Role       @default(USER)
+    password     String     @db.VarChar(60)
+    status       UserStatus @default(INACTIVE)
+    otp          Int?
+    otpExpiresIn DateTime?
+    deleted      Boolean    @default(false)
+    createdAt    DateTime   @default(now())
+    updatedAt    DateTime   @updatedAt
+    deletedAt    DateTime   @updatedAt
+
+    Profile Profile?
+
+    @@index([username, email, phone])
+}
+
+model Profile {
+    id           String        @id @default(uuid())
+    userId       String        @unique
+    firstName    String?
+    lastName     String?
+    otherName    String?
+    avatar       String?
+    dob          String?
+    identityType IdentityType?
+    idNumber     String?       @db.VarChar(15)
+    status       UserStatus    @default(INACTIVE)
+    address      String?
+    lga          String?
+    postalCode   String?       @db.VarChar(10)
+    state        String?
+    country      String?
+    user         User          @relation(fields: [userId], references: [id])
+
+    deleted   Boolean  @default(false)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime @updatedAt
+}
+
+enum Role {
+    ADMIN
+    FINANCE
+    HOST
+    HR
+    RECRUITER
+    SUPER_ADMIN
+    USER
+}
+
+enum UserStatus {
+    ACTIVE
+    INACTIVE
+}
+
+enum IdentityType {
+    BVN
+    DRIVER_LICENSE
+    INTERNATIONAL_PASSPORT
+    NIN
+    VOTERS_CARD
+}
+
+enum DocumentVerificationStatus {
+    FAILED
+    NOT_APPLICABLE
+    NOT_VERIFIED
+    PASSED
+}
+
+enum CurrencyEnum {
+    NGN
+    USD
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/talent-pro/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/talent-pro/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/talent-pro",
+  "projects": {
+    "talent-pro": {
+      "type": "application",
+      "root": "apps/talent-pro",
+      "entryFile": "main",
+      "sourceRoot": "apps/talent-pro/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/talent-pro/tsconfig.app.json"
+      }
+    },
+    "admin-api": {
+      "type": "application",
+      "root": "apps/admin-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/admin-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/admin-api/tsconfig.app.json"
+      }
+    },
+    "talent-api": {
+      "type": "application",
+      "root": "apps/talent-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/talent-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/talent-api/tsconfig.app.json"
+      }
+    },
+    "employer-api": {
+      "type": "application",
+      "root": "apps/employer-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/employer-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/employer-api/tsconfig.app.json"
+      }
+    },
+    "libs": {
+      "type": "library",
+      "root": "libs/libs",
+      "entryFile": "index",
+      "sourceRoot": "libs/libs/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/libs/tsconfig.lib.json"
+      }
+    },
+    "auth": {
+      "type": "application",
+      "root": "apps/auth",
+      "entryFile": "main",
+      "sourceRoot": "apps/auth/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/auth/tsconfig.app.json"
+      }
+    },
+    "datasource": {
+      "type": "library",
+      "root": "libs/datasource",
+      "entryFile": "index",
+      "sourceRoot": "libs/datasource/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/datasource/tsconfig.lib.json"
+      }
+    },
+    
+    "compilerOptions": {
+    "assets": ["**/*.hbs"],
+    "watchAssets": true
+  }
+  }
+}

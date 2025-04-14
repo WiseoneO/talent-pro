@@ -1,0 +1,44 @@
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { Logger, ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { HttpExceptionFilter } from 'libs/helpers/globalExceptionFilter';
+import { ResponseInterceptor } from 'libs/inteceptors/response.interceptors';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+
+async function bootstrap() {
+  const logger = new Logger('bootstrap');
+
+  const app = await NestFactory.create(AppModule);
+  const configService = app.get<ConfigService>(ConfigService);
+
+  app.setGlobalPrefix('api/v1/');
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true,
+    }),
+  );
+
+  app.useGlobalFilters(new HttpExceptionFilter(configService));
+  app.useGlobalInterceptors(new ResponseInterceptor());
+
+  // setting up swagger documentation
+  const config = new DocumentBuilder()
+    .setTitle('Recruiters and Talents API')
+    .setDescription('Recruiters/Talents APIs Documentation')
+    .setVersion('1.0')
+    .addTag('API')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api/v1', app, document);
+
+  const port = 6000;
+  app.enableCors();
+
+  await app.listen(port);
+
+  logger.log(`talent_Pro-api application running to port: ${port}`);
+}
+bootstrap();

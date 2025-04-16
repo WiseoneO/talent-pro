@@ -3,12 +3,14 @@ import { AuthModule } from 'apps/auth/src/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatasourceModule } from '@ds/datasource';
 import { WaitlistModule } from './waitlist/waitlist.module';
-import { WaitlistController } from './waitlist/waitlist.controller';
+import { join } from 'path';
 
 @Module({
-  imports: [ConfigModule.forRoot({
-        isGlobal: true,
-  }),
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: `.env`,
+      isGlobal: true,
+    }),
     AuthModule,
     DatasourceModule,
     WaitlistModule,

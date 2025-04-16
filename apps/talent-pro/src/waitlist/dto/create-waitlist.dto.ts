@@ -17,5 +17,5 @@ export class CreateWaitlistDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  readonly name: string;
+  readonly fullname: string;
 }

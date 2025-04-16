@@ -111,10 +111,7 @@ export class WaitlistService {
 
       await this.brevoContactsApi.createContact(createContact);
     } catch (error) {
-      this.logger.error(`Brevo API error adding contact: ${email}`, {
-        error: error.response?.body || error.message,
-        statusCode: error.response?.status,
-      });
+      this.logger.error(`Brevo API error adding contact: ${email}`)
 
       // Handle specific Brevo error cases
       if (error.response?.status === 400) {

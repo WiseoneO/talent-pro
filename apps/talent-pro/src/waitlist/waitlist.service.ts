@@ -106,7 +106,7 @@ export class WaitlistService {
     try {
       const createContact = new brevo.CreateContact();
       createContact.email = email;
-      createContact.listIds = [8];
+      createContact.listIds = [4];
       createContact.attributes = { FIRSTNAME: fullname };
 
       await this.brevoContactsApi.createContact(createContact);
@@ -140,7 +140,7 @@ export class WaitlistService {
       ]);
 
       if (isInDatabase || isOnBrevoWaitlist) {
-        return new ConflictException('This email is already on the waitlist');
+        throw new ConflictException('This email is already on the waitlist');
       }
 
       // Save to database first (more reliable)
@@ -170,7 +170,7 @@ export class WaitlistService {
         }),
         this.sendEmail({
           template: adminTemplate,
-          email: 'ogboroge@talentpro.africa',
+          email: 'talentproafrica@gmail.com',
           context: {
             fullname,
             email,
@@ -213,7 +213,7 @@ export class WaitlistService {
       sendSmtpEmail.htmlContent = emailHtml;
       sendSmtpEmail.sender = {
         name: 'Talent Pro Africa',
-        email: 'connect@decareerbuilders.com',
+        email: 'talentproafrica@gmail.com',
       };
       sendSmtpEmail.to = [{ email }];
 

@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Talent Pro Africa Waitlist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* Base styles */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', sans-serif;
       line-height: 1.6;
       color: #333333;
       margin: 0;
@@ -29,14 +30,14 @@
     }
     
     .logo {
-      max-width: 150px;
+      max-width: 180px;
       height: auto;
     }
     
     /* Content */
     .content {
       background-color: #ffffff;
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 30px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
@@ -46,20 +47,41 @@
       font-size: 24px;
       margin-top: 0;
       text-align: center;
+      font-weight: 600;
     }
     
     p {
       margin-bottom: 20px;
       font-size: 16px;
+      color: #4a5568;
     }
     
     /* Highlight */
     .highlight {
       background-color: #f8f4ff;
-      padding: 15px;
-      border-left: 4px solid #7c5ac2;
+      padding: 20px;
+      border-radius: 8px;
       margin: 20px 0;
-      border-radius: 0 4px 4px 0;
+    }
+    
+    /* Lists */
+    ul {
+      padding-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 25px;
+      list-style-type: none;
+    }
+    
+    li:before {
+      content: "→";
+      color: #7c5ac2;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
     }
     
     /* Button */
@@ -69,17 +91,22 @@
       color: #ffffff !important;
       text-decoration: none;
       padding: 12px 24px;
-      border-radius: 4px;
-      font-weight: bold;
+      border-radius: 6px;
+      font-weight: 600;
       text-align: center;
       margin: 20px auto;
+      transition: background-color 0.3s;
+    }
+    
+    .button:hover {
+      background-color: #6a4aad;
     }
     
     /* Footer */
     .footer {
       text-align: center;
       padding: 20px 0;
-      color: #7f8c8d;
+      color: #718096;
       font-size: 14px;
     }
     
@@ -90,6 +117,11 @@
     .social-icon {
       display: inline-block;
       margin: 0 10px;
+      transition: transform 0.3s;
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-3px);
     }
     
     /* Responsive */
@@ -103,7 +135,11 @@
       }
       
       h1 {
-        font-size: 20px;
+        font-size: 22px;
+      }
+      
+      .logo {
+        max-width: 140px;
       }
     }
   </style>
@@ -117,29 +153,36 @@
     
     <!-- Main Content -->
     <div class="content">
-      <h1>Welcome to the Talent Pro Africa Waitlist, {{name}}!</h1>
+      <h1>Hi {{fullname}},</h1>
+
+      <p><i>Big news - TalentPro Africa is almost here!</i><br>
+      We're gearing up to launch the AI-powered platform that's about to transform how Africa connects top talent with leading employers and you're on our exclusive waitlist.</p>
       
-      <p>Thank you for joining our exclusive waitlist. We're excited to have you on board as we prepare to launch Africa's premier talent platform.</p>
+      <p>Think of TalentPro Africa as more than just a job platform. It's a vibrant talent community where careers take flight, recruiters find their perfect match and opportunities are always within reach.</p>
       
       <div class="highlight">
-        <p><strong>What to expect:</strong></p>
+        <p><strong>Here's a little peek of what's coming:</strong></p>
         <ul>
-          <li>Early access to our platform before public launch</li>
-          <li>Exclusive offers and discounts</li>
-          <li>Regular updates on our progress</li>
-          <li>Priority support when we go live</li>
+          <li><b>Professional profile:</b> Create a shining profile with your CV, portfolio and even a video intro</li>
+          <li><b>One-Click Applications:</b> Apply for jobs in seconds and track your journey with ease.</li>
+          <li><b>Career Toolkit:</b> Build and store your CVs, cover letters, and samples in one place.</li>
+          <li><b>AI-Powered talent Matching:</b> Get discovered by top recruiters through our intelligent swipe system.</li>
+          <li><b>Networking & career Growth:</b> Connect with peers, join discussions and attend career-boosting events.</li>
         </ul>
       </div>
       
-      <p>We're working hard to create the best experience for connecting African talent with global opportunities. In the meantime, help us grow our community by sharing with your network:</p>
+      <p>And that's just the beginning! We're also packing in:</p>
+      <ul>
+        <li><b>Real-Time Chat & Video Interviews</b></li>
+        <li><b>Analytical Dashboards to track your performance</b></li>
+        <li><b>Gamification + Reward System to make it fun!</b></li>
+        <li><b>Mobile App Access - Anytime, Anywhere</b></li>
+      </ul>
       
-      {{!-- <center>
-        <a href="https://twitter.com/intent/tweet?text=I%27ve%20joined%20the%20@TalentProAfrica%20waitlist%20to%20connect%20with%20top%20talent%20and%20opportunities%20across%20Africa!%20Join%20me%20at%20[YOUR_URL]" class="button">Share on Twitter</a>
-      </center> --}}
+      <p>We can't wait to open the doors and welcome you in. You are not just getting early access, you are stepping into the future of work in Africa.</p>
       
-      <p>If you have any questions, simply reply to this email. We'd love to hear from you!</p>
-      
-      <p>Best regards,<br>The Talent Pro Africa Team</p>
+      <p>Hang tight, it's almost "Go Time!"</p>
+      <p>Warm Regards,<br>The Talent Pro Africa Team</p>
     </div>
     
     <!-- Footer -->
@@ -157,12 +200,6 @@
       </div>
       
       <p>&copy; 2025 Talent Pro Africa. All rights reserved.</p>
-      <p>Our address: [Your Company Address]</p>
-      <p>
-        <a href="#">Unsubscribe</a> | 
-        <a href="#">Privacy Policy</a> | 
-        <a href="#">Terms of Service</a>
-      </p>
     </div>
   </div>
 </body>

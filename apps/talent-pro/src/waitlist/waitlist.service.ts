@@ -88,6 +88,8 @@ export class WaitlistService {
 
   async isEmailOnWaitlist(email: string): Promise<boolean> {
     try {
+      // email to lowercase
+      email = email.toLowerCase();
       const response = await this.brevoContactsApi.getContactInfo(email);
       return response.body.listIds?.includes(2) ?? false;
     } catch (error) {
@@ -103,6 +105,8 @@ export class WaitlistService {
   }
 
   async addToBrevoWaitlist(email: string, fullname: string): Promise<void> {
+    // email to lowercase
+    email = email.toLowerCase();
     try {
       const createContact = new brevo.CreateContact();
       createContact.email = email;
@@ -129,7 +133,9 @@ export class WaitlistService {
   }
 
   async addToWaitlist(payload: { email: string; fullname: string }) {
-    const { email, fullname } = payload;
+    let { email, fullname } = payload;
+    // email to lowercase
+    email = email.toLowerCase();
 
     try {
       // Check existing records in parallel
